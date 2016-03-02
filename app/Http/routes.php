@@ -11,12 +11,9 @@
 |
 */
 
-/*Route::get('/', function () {
+Route::get('/', function () {
     return view('welcome');
-});*/
-
-Route::get('/', 'InstallsController@index');
-Route::get('/installs/{id}', 'InstallsController@view');
+});
 
 /*
 |--------------------------------------------------------------------------
@@ -31,4 +28,13 @@ Route::get('/installs/{id}', 'InstallsController@view');
 
 Route::group(['middleware' => ['web']], function () {
     //
+});
+
+Route::group(['middleware' => 'web'], function () {
+    Route::auth();
+
+    Route::get('/home', 'HomeController@index');
+
+    Route::get('/installs', 'InstallsController@index');
+    Route::get('/installs/{id}', 'InstallsController@view');
 });
