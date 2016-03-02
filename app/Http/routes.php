@@ -11,9 +11,12 @@
 |
 */
 
-Route::get('/', function () {
+/*Route::get('/', function () {
     return view('welcome');
-});
+});*/
+
+Route::get('/', 'InstallsController@index');
+Route::get('/installs/{id}', 'InstallsController@view');
 
 /*
 |--------------------------------------------------------------------------
