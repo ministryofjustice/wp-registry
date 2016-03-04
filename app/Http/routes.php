@@ -11,10 +11,6 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -26,15 +22,17 @@ Route::get('/', function () {
 |
 */
 
-Route::group(['middleware' => ['web']], function () {
-    //
-});
-
 Route::group(['middleware' => 'web'], function () {
-    Route::auth();
+    Route::get('/', function () {
+        return redirect()->route('installs.index');
+    });
 
-    Route::get('/home', 'HomeController@index');
+    Route::get('installs', ['as' => 'installs.index', 'uses' => 'InstallsController@index']);
+    Route::get('installs/{id}', ['as' => 'installs.view', 'uses' => 'InstallsController@view']);
 
-    Route::get('/installs', 'InstallsController@index');
-    Route::get('/installs/{id}', 'InstallsController@view');
+    // Authentication Routes
+    Route::get('login', ['as' => 'login', 'uses' => 'Auth\AuthController@showLoginForm']);
+    Route::get('logout', ['as' => 'logout', 'uses' => 'Auth\AuthController@logout']);
+    Route::get('login/google', ['as' => 'login.google', 'uses' => 'Auth\AuthController@redirectToProvider']);
+    Route::get('login/google/callback', ['as' => 'login.google.callback', 'uses' => 'Auth\AuthController@handleProviderCallback']);
 });
