@@ -8,6 +8,7 @@ class Install extends Model
 {
     public $fillable = [
         'name',
+        'site_id',
         'url',
         'wordpress_version',
     ];

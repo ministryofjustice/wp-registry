@@ -3,16 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Install;
-use Illuminate\Http\Request;
-
-use App\Http\Requests;
 
 class InstallsController extends Controller
 {
     /**
      * Create a new controller instance.
-     *
-     * @return void
      */
     public function __construct()
     {
@@ -27,7 +22,6 @@ class InstallsController extends Controller
 
     public function view($id)
     {
-        $this->middleware('auth');
         $install = Install::findOrFail($id);
         return view('installs.view', compact('install'));
     }

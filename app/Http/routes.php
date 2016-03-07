@@ -36,3 +36,7 @@ Route::group(['middleware' => 'web'], function () {
     Route::get('login/google', ['as' => 'login.google', 'uses' => 'Auth\AuthController@redirectToProvider']);
     Route::get('login/google/callback', ['as' => 'login.google.callback', 'uses' => 'Auth\AuthController@handleProviderCallback']);
 });
+
+Route::group(['prefix' => 'api', 'namespace' => 'Api', 'middleware' => 'api'], function () {
+    Route::post('installs/announce', ['uses' => 'InstallsController@postAnnounce']);
+});
