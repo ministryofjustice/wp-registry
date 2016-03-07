@@ -16,6 +16,7 @@ class Install extends Model
     public function plugins()
     {
         return $this->belongsToMany('App\Plugin')
-            ->withPivot(['version', 'is_mu_plugin', 'is_active']);
+            ->withPivot(['version', 'is_mu_plugin', 'is_active'])
+            ->orderBy('name');
     }
 }
