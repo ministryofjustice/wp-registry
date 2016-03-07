@@ -4,17 +4,16 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Install extends Model
+class Plugin extends Model
 {
     public $fillable = [
         'name',
-        'url',
-        'wordpress_version',
+        'slug',
     ];
 
-    public function plugins()
+    public function installs()
     {
-        return $this->belongsToMany('App\Plugin')
+        return $this->belongsToMany('App\Install')
             ->withPivot(['version', 'is_mu_plugin', 'is_active']);
     }
 }
