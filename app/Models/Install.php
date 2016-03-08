@@ -19,4 +19,13 @@ class Install extends Model
             ->withPivot(['version', 'is_mu_plugin', 'is_active'])
             ->orderBy('name');
     }
+
+    public function newPivot(Model $parent, array $attributes, $table, $exists)
+    {
+        if ($parent instanceof Plugin) {
+            return new InstallPluginPivot($parent, $attributes, $table, $exists);
+        }
+
+        return parent::newPivot($parent, $attributes, $table, $exists);
+    }
 }

@@ -29,18 +29,39 @@
                                 <thead>
                                     <tr>
                                         <th>Plugin</th>
-                                        <th>Version</th>
-                                        <th>Is mu-plugin?</th>
-                                        <th>Is active?</th>
+                                        <th>Active</th>
+                                        <th>Type</th>
+                                        <th colspan="2">Version</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @foreach ($install->plugins as $plugin)
-                                        <tr class="{{ (!$plugin->pivot->is_active)? 'active' : '' }}">
+                                        <tr>
                                             <td>{{ $plugin->name }}</td>
-                                            <td>{{ $plugin->pivot->version }}</td>
-                                            <td>{{ $plugin->pivot->is_mu_plugin }}</td>
-                                            <td>{{ $plugin->pivot->is_active }}</td>
+                                            <td>
+                                                @if($plugin->pivot->is_active)
+                                                    <span class="label label-primary">active</span>
+                                                @else
+                                                    <span class="label label-default">inactive</span>
+                                                @endif
+                                            </td>
+                                            <td>
+                                                @if($plugin->pivot->is_mu_plugin)
+                                                    mu-plugin
+                                                @else
+                                                    plugin
+                                                @endif
+                                            </td>
+                                            <td>
+                                                {{ $plugin->pivot->version }}
+                                            </td>
+                                            <td>
+                                                @if(!$plugin->pivot->is_current)
+                                                    <span class="label label-danger" title="Current version is {{ $plugin->current_version }}">
+                                                        out of date
+                                                    </span>
+                                                @endif
+                                            </td>
                                         </tr>
                                     @endforeach
                                 </tbody>

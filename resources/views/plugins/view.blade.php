@@ -27,12 +27,12 @@
                                         <th>Name</th>
                                         <th>URL</th>
                                         <th>Active</th>
-                                        <th>Version</th>
+                                        <th colspan="2">Version</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @foreach ($plugin->installs as $install)
-                                        <tr class="{{ ($install->pivot->version !== $plugin->current_version)? 'danger' : '' }}">
+                                        <tr>
                                             <td><a href="{{ route('installs.view', [$install->id]) }}">{{ $install->name }}</a></td>
                                             <td><a href="{{ $install->url }}" target="_blank">{{ $install->url }} <span class="fa fa-external-link"></span></a></td>
                                             <td>
@@ -42,7 +42,16 @@
                                                     <span class="label label-default">inactive</span>
                                                 @endif
                                             </td>
-                                            <td>{{ $install->pivot->version }}</td>
+                                            <td>
+                                                {{ $install->pivot->version }}
+                                            </td>
+                                            <td>
+                                                @if(!$install->pivot->is_current)
+                                                    <span class="label label-danger" title="Current version is {{ $plugin->current_version }}">
+                                                        out of date
+                                                    </span>
+                                                @endif
+                                            </td>
                                         </tr>
                                     @endforeach
                                 </tbody>

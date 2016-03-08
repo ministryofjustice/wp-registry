@@ -31,4 +31,13 @@ class Plugin extends Model
         $wp = App::make(WordPressVersion::class);
         return $wp->plugin($this->slug);
     }
+
+    public function newPivot(Model $parent, array $attributes, $table, $exists)
+    {
+        if ($parent instanceof Install) {
+            return new InstallPluginPivot($parent, $attributes, $table, $exists);
+        }
+
+        return parent::newPivot($parent, $attributes, $table, $exists);
+    }
 }
