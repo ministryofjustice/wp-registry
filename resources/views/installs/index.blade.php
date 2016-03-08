@@ -14,7 +14,7 @@
                             <tr>
                                 <th>Name</th>
                                 <th>URL</th>
-                                <th>WordPress version</th>
+                                <th colspan="2">WordPress version</th>
                             </tr>
                             </thead>
 
@@ -23,6 +23,13 @@
                                     <td><a href="{{ route('installs.view', [$install->id]) }}">{{ $install->name }}</a></td>
                                     <td><a href="{{ $install->url }}" target="_blank" >{{ $install->url }} <i class="fa fa-external-link"></i></a></td>
                                     <td>{{ $install->wordpress_version }}</td>
+                                    <td>
+                                        @if(!$install->wordpress_is_current)
+                                            <span class="label label-danger" title="Current version is {{ $wordpressCurrentVersion }}">
+                                                out of date
+                                            </span>
+                                        @endif
+                                    </td>
                                 </tr>
                             @endforeach
 

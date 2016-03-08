@@ -19,12 +19,19 @@
                             <dt>URL</dt>
                             <dd><a href="{{ $install->url }}" target="_blank">{{ $install->url }} <i class="fa fa-external-link"></i></a></dd>
                             <dt>WordPress Version</dt>
-                            <dd>{{ $install->wordpress_version }}</dd>
+                            <dd>
+                                {{ $install->wordpress_version }}
+                                @if(!$install->wordpress_is_current)
+                                    <span class="label label-danger" title="Current version is {{ $wordpressCurrentVersion }}">
+                                        out of date
+                                    </span>
+                                @endif
+                            </dd>
                         </dl>
 
-                        <h2>Installed Plugins <small>({{count($install->plugins)}})</small></h2>
+                        <h2>Installed Plugins <small>({{ count($install->plugins) }})</small></h2>
 
-                        @if (count($install->plugins))
+                        @if ( count($install->plugins) )
                             <table class="table">
                                 <thead>
                                     <tr>

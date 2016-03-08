@@ -18,12 +18,14 @@ class InstallsController extends Controller
     public function index(WordPressVersion $wp)
     {
         $installs = Install::all();
-        return view('installs.index', compact('installs'));
+        $wordpressCurrentVersion = $wp->core();
+        return view('installs.index', compact('installs', 'wordpressCurrentVersion'));
     }
 
-    public function view($id)
+    public function view($id, WordPressVersion $wp)
     {
         $install = Install::findOrFail($id);
-        return view('installs.view', compact('install'));
+        $wordpressCurrentVersion = $wp->core();
+        return view('installs.view', compact('install', 'wordpressCurrentVersion'));
     }
 }

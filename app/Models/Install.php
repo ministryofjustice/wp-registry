@@ -3,6 +3,8 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use App;
+use App\Services\WordPressVersion;
 
 class Install extends Model
 {
@@ -12,6 +14,13 @@ class Install extends Model
         'url',
         'wordpress_version',
     ];
+
+    /**
+     * The accessors to append to the model's array form.
+     *
+     * @var array
+     */
+    protected $appends = ['wordpress_is_current'];
 
     public function plugins()
     {
@@ -27,5 +36,12 @@ class Install extends Model
         }
 
         return parent::newPivot($parent, $attributes, $table, $exists);
+    }
+
+    public function getWordpressIsCurrentAttribute()
+    {
+        $wp = App::make(WordPressVersion::class);
+        $current = $wp->core();
+        return ($this->wordpress_version == $current);
     }
 }

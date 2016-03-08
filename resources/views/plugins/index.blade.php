@@ -21,8 +21,8 @@
                             @foreach ($plugins as $plugin)
                                 <tr>
                                     <td><a href="{{ route('plugins.view', [$plugin->id]) }}">{{ $plugin->name }}</a></td>
-                                    <td></td>
-                                    <td>{{ $plugin->wordpress_version }}</td>
+                                    <td>{{ $plugin->current_version }}</td>
+                                    <td>{{ $plugin->installs()->count() }}</td>
                                 </tr>
                             @endforeach
 
