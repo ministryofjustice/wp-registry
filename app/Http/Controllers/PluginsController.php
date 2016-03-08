@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Plugin;
+use App\Models\Plugin;
 
 class PluginsController extends Controller
 {

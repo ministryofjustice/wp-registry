@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Install;
+use App\Models\Install;
+use App\Services\WordPressVersion;
 
 class InstallsController extends Controller
 {
@@ -14,7 +15,7 @@ class InstallsController extends Controller
         $this->middleware('auth');
     }
 
-    public function index()
+    public function index(WordPressVersion $wp)
     {
         $installs = Install::all();
         return view('installs.index', compact('installs'));

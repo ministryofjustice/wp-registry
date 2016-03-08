@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -15,7 +15,7 @@ class Install extends Model
 
     public function plugins()
     {
-        return $this->belongsToMany('App\Plugin')
+        return $this->belongsToMany('App\Models\Plugin')
             ->withPivot(['version', 'is_mu_plugin', 'is_active'])
             ->orderBy('name');
     }
