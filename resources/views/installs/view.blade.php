@@ -9,7 +9,7 @@
                     <div class="panel-heading">Installs</div>
 
                     <div class="panel-body">
-                        <a href="{{ action('InstallsController@index') }}">Return to list</a>
+                        <a href="{{ route('installs.index') }}">Return to list</a>
 
                         <h1>{{ $install->name }}</h1>
 

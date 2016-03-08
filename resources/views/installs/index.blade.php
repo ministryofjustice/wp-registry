@@ -20,7 +20,7 @@
 
                             @foreach ($installs as $install)
                                 <tr>
-                                    <td><a href="{{ action('InstallsController@view', [$install->id]) }}">{{ $install->name }}</a></td>
+                                    <td><a href="{{ route('installs.view', [$install->id]) }}">{{ $install->name }}</a></td>
                                     <td><a href="{{ $install->url }}" target="_blank" >{{ $install->url }} <i class="fa fa-external-link"></i></a></td>
                                     <td>{{ $install->wordpress_version }}</td>
                                 </tr>
