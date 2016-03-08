@@ -30,6 +30,9 @@ Route::group(['middleware' => 'web'], function () {
     Route::get('installs', ['as' => 'installs.index', 'uses' => 'InstallsController@index']);
     Route::get('installs/{id}', ['as' => 'installs.view', 'uses' => 'InstallsController@view']);
 
+    Route::get('plugins', ['as' => 'plugins.index', 'uses' => 'PluginsController@index']);
+    Route::get('plugins/{id}', ['as' => 'plugins.view', 'uses' => 'PluginsController@view']);
+
     // Authentication Routes
     Route::get('login', ['as' => 'login', 'uses' => 'Auth\AuthController@showLoginForm']);
     Route::get('logout', ['as' => 'logout', 'uses' => 'Auth\AuthController@logout']);
