@@ -17,7 +17,7 @@
                             <dt>Install Name</dt>
                             <dd>{{ $install->name }}</dd>
                             <dt>URL</dt>
-                            <dd><a href="{{ $install->url }}" target="_blank">{{ $install->url }}</a></dd>
+                            <dd><a href="{{ $install->url }}" target="_blank">{{ $install->url }} <i class="fa fa-external-link"></i></a></dd>
                             <dt>WordPress Version</dt>
                             <dd>{{ $install->wordpress_version }}</dd>
                         </dl>

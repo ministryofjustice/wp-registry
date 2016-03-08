@@ -14,7 +14,6 @@
                             <tr>
                                 <th>Name</th>
                                 <th>URL</th>
-                                <th>Environment</th>
                                 <th>WordPress version</th>
                             </tr>
                             </thead>
@@ -22,8 +21,7 @@
                             @foreach ($installs as $install)
                                 <tr>
                                     <td><a href="{{ action('InstallsController@view', [$install->id]) }}">{{ $install->name }}</a></td>
-                                    <td><a href="{{ $install->url }}" target="_blank" >{{ $install->url }}</a></td>
-                                    <td>{{ $install->environment }}</td>
+                                    <td><a href="{{ $install->url }}" target="_blank" >{{ $install->url }} <i class="fa fa-external-link"></i></a></td>
                                     <td>{{ $install->wordpress_version }}</td>
                                 </tr>
                             @endforeach
