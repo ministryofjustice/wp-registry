@@ -37,7 +37,11 @@
                                 <tbody>
                                     @foreach ($install->plugins as $plugin)
                                         <tr>
-                                            <td>{{ $plugin->name }}</td>
+                                            <td>
+                                                <a href="{{ route('plugins.view', [$plugin->id]) }}">
+                                                    {{ $plugin->name }}
+                                                </a>
+                                            </td>
                                             <td>
                                                 @if($plugin->pivot->is_active)
                                                     <span class="label label-primary">active</span>
