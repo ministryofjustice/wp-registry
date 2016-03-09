@@ -3,9 +3,9 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Plugin;
+use App\Models\Plugin;
 use Illuminate\Http\Request;
-use App\Install;
+use App\Models\Install;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 
